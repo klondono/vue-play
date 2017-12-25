@@ -8,13 +8,13 @@
                 </tr>
             </thead>
             <tbody>
-<!--                 <tr v-for="(item) of journalEntries" v-bind:key="item.TxnId">
+                <tr>
+                    <td>{{rowData.name}}</td>
+                </tr>
+                <tr v-for="(item) of journalEntries" v-bind:key="item.TxnId">
                     <td>{{item.ActionStatus}}</td>
                     <td>{{item.TxnId}}</td>
-                </tr> -->
-                <tr>
-                    <td>{{rowIndex}}</td>
-                </tr>
+                </tr> 
             </tbody>
         </table>
     </div>

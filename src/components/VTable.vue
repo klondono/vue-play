@@ -54,11 +54,18 @@ Vue.component('my-detail-row', detailrow) */
        }, 
        mounted() {
 
-           this.$refs.vuetable.toggleDetailRow(2);
+           console.log(this.$refs.vuetable.data);
+
+           //
        },
        methods: {
-
-
+           allcap (value) {
+                return value.toUpperCase()
+            },
+            showDetail (value) {
+                this.$refs.vuetable.toggleDetailRow(value);
+                return value;
+            }    
        },
     }
 </script>

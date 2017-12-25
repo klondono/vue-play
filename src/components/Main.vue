@@ -14,11 +14,11 @@
 </template>
 
 <script>
-//import proclinks from './ProcLinks.vue';
+import proclinks from './ProcLinks.vue';
 import Vue from 'vue'
 import vtable from './VTable.vue';
-import detailrow from './DetailRow.vue';
-Vue.component('my-detail-row', detailrow)
+//import detailrow from './DetailRow.vue';
+Vue.component('proc-links', proclinks)
 
 
     export default {
@@ -32,19 +32,17 @@ Vue.component('my-detail-row', detailrow)
                permissions: {Modify: true, Approve: true, Discard: false, Remodify: false, View: true},
                apiURL: 'https://vuetable.ratiw.net/api/users',
                //apiURL: 'https://jsonplaceholder.typicode.com/posts',
-               fields: ['id','name', 'email','birthdate','nickname','gender'],
+               fields: [{name: 'id', title: 'title', callback: 'showDetail'},{name: 'name', title: 'Title', callback: 'allcap'}, 'email','birthdate','nickname','gender'],
                //httpMethod:'post',
                httpMethod:'get',
                httpOptions: {name: 'firstName', lastName: 'lastName'},
                trackBy:'id',
-               detailComponent: 'my-detail-row'
+               detailComponent: 'proc-links'
            }
        }, 
-       methods: {
-           name() {
-               
-           }
-       },
+       mounted() {
+
+       }
     }
 </script>
 
