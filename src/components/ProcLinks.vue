@@ -8,9 +8,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(item) of journalEntries" v-bind:key="item.TxnId">
+<!--                 <tr v-for="(item) of journalEntries" v-bind:key="item.TxnId">
                     <td>{{item.ActionStatus}}</td>
                     <td>{{item.TxnId}}</td>
+                </tr> -->
+                <tr>
+                    <td>{{rowIndex}}</td>
                 </tr>
             </tbody>
         </table>
@@ -20,6 +23,15 @@
 <script>
 
     export default {
+        props: {
+            rowData: {
+                type: Object,
+                required: true
+            },
+            rowIndex: {
+                type: Number
+            }
+        },
        data() {
            const self = this;
            return {
