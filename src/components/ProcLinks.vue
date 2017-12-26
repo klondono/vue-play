@@ -23,6 +23,7 @@
 <script>
 
     export default {
+        
         props: {
             rowData: {
                 type: Object,
@@ -32,11 +33,15 @@
                 type: Number
             }
         },
+        mounted(){
+            const self = this;
+            console.log('mounted');
+        },
        data() {
            const self = this;
            return {
                journalEntries: [{ActionStatus: "Await Approval", TxnId: 1},{ActionStatus: "Rejected", TxnId: 2}],
-               dataFromParent: self.$parent.permissions
+               dataFromParent: self.$parent.$parent.$parent.permissions
            }
        }, 
        methods: {

@@ -13,10 +13,8 @@
 </template>
 
 <script>
-// import Vue from 'vue'
 import Vuetable from '../../node_modules/vuetable-2/src/components/Vuetable.vue';
-/* import detailrow from './DetailRow.vue';
-Vue.component('my-detail-row', detailrow) */
+
 
     export default {
         components: {
@@ -54,17 +52,29 @@ Vue.component('my-detail-row', detailrow) */
        }, 
        mounted() {
 
-           console.log(this.$refs.vuetable.data);
+       },
+       updated() {
+           const self = this;
+           
+           const table = self.$refs.vuetable;
+           console.log('updated called')
 
-           //
+           console.log(table.countTableData);
        },
        methods: {
            allcap (value) {
                 return value.toUpperCase()
             },
-            showDetail (value) {
-                this.$refs.vuetable.toggleDetailRow(value);
-                return value;
+            transform: function(data) {
+                
+                    let list = data.data;
+                    for(let item of list) {
+                        
+                        this.$refs.vuetable.visibleDetailRows.push(item.id);
+
+                    }
+
+                    return data;
             }    
        },
     }

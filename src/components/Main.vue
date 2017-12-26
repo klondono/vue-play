@@ -7,8 +7,9 @@
             :fields="fields"
             :httpMethod="httpMethod"
             :httpOptions="httpOptions"
-            :detail-row-component="detailComponent"
-            :track-by="trackBy"
+            :detailRowComponent="detailComponent"
+            :trackBy="trackBy"
+            :append-params="vm"
         ></vtable>
     </div>
 </template>
@@ -17,25 +18,25 @@
 import proclinks from './ProcLinks.vue';
 import Vue from 'vue'
 import vtable from './VTable.vue';
-//import detailrow from './DetailRow.vue';
+
 Vue.component('proc-links', proclinks)
 
 
     export default {
         components: {
-            // proclinks,
             vtable
         },
        data() {
            return {
+               vm: {name: 'firstName', lastName: 'lastName'},
                key: "This is main js where we will store some info.",
                permissions: {Modify: true, Approve: true, Discard: false, Remodify: false, View: true},
                apiURL: 'https://vuetable.ratiw.net/api/users',
                //apiURL: 'https://jsonplaceholder.typicode.com/posts',
-               fields: [{name: 'id', title: 'title', callback: 'showDetail'},{name: 'name', title: 'Title', callback: 'allcap'}, 'email','birthdate','nickname','gender'],
+               fields: [{name: 'id', title: 'title'},{name: 'name', title: 'Title', callback: 'allcap'}, 'email','birthdate','nickname','gender'],
                //httpMethod:'post',
                httpMethod:'get',
-               httpOptions: {name: 'firstName', lastName: 'lastName'},
+               httpOptions: {},
                trackBy:'id',
                detailComponent: 'proc-links'
            }
